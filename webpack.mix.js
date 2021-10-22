@@ -11,7 +11,15 @@ const mix = require('laravel-mix');
  |
  */
 
+ mix.browserSync({ 
+    proxy: 'cryptoboard.test',
+    socket: {
+      domain: 'localhost:3000'
+    }
+  });
+
 mix.js('resources/js/app.js', 'public/js')
+    .sass('resources/sass/custom.scss', 'public/css')
     .postCss('resources/css/app.css', 'public/css', [
-        //
+        require('tailwindcss'),
     ]);
